@@ -1,5 +1,8 @@
 
 var SECRET = "fdg klfdgj lfdj gfdsl;gj  sge45higksjd dkjh klfgdjh -ifjldkfjgldkjflkgjdkl ";
+var HOST = 'x.sr.unh.edu';
+var PORT = 3000;
+var SOCKET_IO_CONNECT = HOST+':'+PORT;
 
 
 var
@@ -11,13 +14,13 @@ var
   server = require('http').createServer(app),
   io = require('socket.io').listen(server);
 
-server.listen(3000);
+server.listen(PORT, HOST);
+
+app.get('/', function(req,res) {
+  res.send("<!DOCTYPE html>\n<html><head><link rel=stylesheet type='text/css' href='static/main.css' /><script>SOCKET_IO_CONNECT='"+SOCKET_IO_CONNECT+"';</script><script src=static/jquery.js></script><script src=static/google-diff-match-patch/diff_match_patch.js></script><script src=/socket.io/socket.io.js></script><script src=static/ckeditor/ckeditor.js></script><script src=static/ckeditor/adapters/jquery.js></script></head><body><div id=doceditor></div><script src=static/main.js></script></body></html>");
+});
 
 app.use('/static', express.static(__dirname + '/static'));
-
-app.get('/', function(req, res){
-  res.redirect('/static/coe.html');
-});
 
 var clientSeq = 0;
 var files = {}; // fn: { deltas: [], data: "", i: 0, fn: "relative/path/to/file.ext" };
