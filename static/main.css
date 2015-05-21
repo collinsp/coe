@@ -3,3 +3,9 @@ html, body {
   height: 100%;
   position: relative;
 }
+
+a.cke_button__maximize {
+  display: none !important;
+}
+
+
