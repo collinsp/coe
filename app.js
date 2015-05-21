@@ -1,6 +1,6 @@
 
 var SECRET = "fdg klfdgj lfdj gfdsl;gj  sge45higksjd dkjh klfgdjh -ifjldkfjgldkjflkgjdkl ";
-var HOST = 'x.sr.unh.edu';
+var HOST = '';
 var PORT = 3000;
 var SOCKET_IO_CONNECT = HOST+':'+PORT;
 
@@ -81,4 +81,4 @@ io.sockets.on('connection', function (socket) {
   });
 });
 
-console.log('Listening on port 3000');
+console.log('http://'+((HOST)?HOST:'localhost')+((PORT==80)?'':':'+PORT));
